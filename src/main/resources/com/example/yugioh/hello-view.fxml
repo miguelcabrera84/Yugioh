@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane prefHeight="650.0" prefWidth="950.0" style="-fx-background-color: #161822;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.yugioh.HelloController">
+    <children>
+        <BorderPane fx:id="panelMenu">
+            <center>
+                <VBox alignment="CENTER" spacing="22.0">
+                    <children>
+                        <Label text="YU-GI-OH! 25TH ANNIVERSARY TIN" textFill="#f5c542">
+                            <font>
+                                <Font name="System Bold" size="26.0" />
+                            </font>
+                        </Label>
+
+                        <HBox alignment="CENTER_LEFT" maxWidth="520.0" spacing="20.0">
+                            <children>
+                                <Button onAction="#onShowAllCards" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: #2c3144; -fx-text-fill: white; -fx-border-color: #f5c542; -fx-border-radius: 8; -fx-background-radius: 8; -fx-font-weight: bold; -fx-font-size: 15;" text="Show all cards" />
+                            </children>
+                        </HBox>
+
+                        <HBox alignment="CENTER_LEFT" maxWidth="520.0" spacing="20.0">
+                            <children>
+                                <Button onAction="#onShowByLevel" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: #2c3144; -fx-text-fill: white; -fx-border-color: #f5c542; -fx-border-radius: 8; -fx-background-radius: 8; -fx-font-weight: bold; -fx-font-size: 15;" text="Show by level" />
+                                <VBox spacing="4.0">
+                                    <children>
+                                        <Label text="Choose level" textFill="#d0d4e4">
+                                            <font>
+                                                <Font name="System Bold" size="12.0" />
+                                            </font>
+                                        </Label>
+                                        <ComboBox fx:id="comboNivel" prefHeight="30.0" prefWidth="180.0" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+
+                        <HBox alignment="CENTER_LEFT" maxWidth="520.0" spacing="20.0">
+                            <children>
+                                <Button onAction="#onShowByAttribute" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: #2c3144; -fx-text-fill: white; -fx-border-color: #f5c542; -fx-border-radius: 8; -fx-background-radius: 8; -fx-font-weight: bold; -fx-font-size: 15;" text="Show by attribute" />
+                                <VBox spacing="4.0">
+                                    <children>
+                                        <Label text="Choose attribute" textFill="#d0d4e4">
+                                            <font>
+                                                <Font name="System Bold" size="12.0" />
+                                            </font>
+                                        </Label>
+                                        <ComboBox fx:id="comboAtributo" prefHeight="30.0" prefWidth="180.0" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+
+                        <HBox alignment="CENTER_LEFT" maxWidth="520.0" spacing="20.0">
+                            <children>
+                                <Button onAction="#onShowByAttack" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: #2c3144; -fx-text-fill: white; -fx-border-color: #f5c542; -fx-border-radius: 8; -fx-background-radius: 8; -fx-font-weight: bold; -fx-font-size: 15;" text="Show by attack points" />
+                                <CheckBox fx:id="checkAtkLowToHigh" text="Low to high" textFill="#d0d4e4">
+                                    <font>
+                                        <Font name="System Bold" size="13.0" />
+                                    </font>
+                                </CheckBox>
+                            </children>
+                        </HBox>
+
+                        <HBox alignment="CENTER_LEFT" maxWidth="520.0" spacing="20.0">
+                            <children>
+                                <Button onAction="#onShowByDefense" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: #2c3144; -fx-text-fill: white; -fx-border-color: #f5c542; -fx-border-radius: 8; -fx-background-radius: 8; -fx-font-weight: bold; -fx-font-size: 15;" text="Show by defense points" />
+                                <CheckBox fx:id="checkDefLowToHigh" text="Low to high" textFill="#d0d4e4">
+                                    <font>
+                                        <Font name="System Bold" size="13.0" />
+                                    </font>
+                                </CheckBox>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </center>
+            <bottom>
+                <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
+                    <padding>
+                        <Insets bottom="20.0" right="25.0" />
+                    </padding>
+                    <children>
+                        <Button fx:id="btnAudioMenu" onAction="#onToggleAudio" style="-fx-background-color: #2c3144; -fx-text-fill: #f5c542; -fx-font-size: 20; -fx-background-radius: 50;" text="🔊" />
+                    </children>
+                </HBox>
+            </bottom>
+        </BorderPane>
+
+        <BorderPane fx:id="panelCarrusel" visible="false">
+            <top>
+                <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: #10121a;">
+                    <padding>
+                        <Insets bottom="12.0" left="20.0" right="20.0" top="12.0" />
+                    </padding>
+                    <children>
+                        <Button onAction="#onVolverMenu" style="-fx-background-color: #f5c542; -fx-text-fill: #10121a; -fx-font-weight: bold;" text="⬅ Volver al menú" />
+                        <Label fx:id="lblTituloFiltro" text="Todas las cartas" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="16.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="lblContador" text="(1/150)" textFill="#f5c542">
+                            <font>
+                                <Font name="System Bold" size="16.0" />
+                            </font>
+                        </Label>
+                        <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Button fx:id="btnAudioCarrusel" onAction="#onToggleAudio" style="-fx-background-color: #2c3144; -fx-text-fill: #f5c542; -fx-font-size: 16;" text="🔊" />
+                            </children>
+                        </HBox>
+                    </children>
+                </HBox>
+            </top>
+            <center>
+                <HBox alignment="CENTER" spacing="25.0">
+                    <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                    </padding>
+                    <children>
+                        <VBox alignment="CENTER" onMouseClicked="#onAnterior" spacing="8.0" style="-fx-cursor: hand;">
+                            <children>
+                                <Label text="◀ Anterior" textFill="#a0a8c0">
+                                    <font>
+                                        <Font name="System Bold" size="13.0" />
+                                    </font>
+                                </Label>
+                                <ImageView fx:id="imgAnterior" fitHeight="210.0" fitWidth="145.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" />
+                                <Label fx:id="lblNombreAnterior" maxWidth="145.0" text="Carta Ant" textFill="#a0a8c0" wrapText="true" />
+                            </children>
+                        </VBox>
+
+                        <HBox alignment="CENTER" spacing="20.0" style="-fx-background-color: #222636; -fx-padding: 20; -fx-background-radius: 12; -fx-border-color: #f5c542; -fx-border-radius: 12; -fx-border-width: 2;">
+                            <children>
+                                <ImageView fx:id="imgActual" fitHeight="380.0" fitWidth="260.0" pickOnBounds="true" preserveRatio="true" />
+                                <VBox prefWidth="290.0" spacing="10.0">
+                                    <children>
+                                        <Label fx:id="lblNombreActual" text="Nombre de la Carta" textFill="#f5c542" wrapText="true">
+                                            <font>
+                                                <Font name="System Bold" size="20.0" />
+                                            </font>
+                                        </Label>
+                                        <HBox spacing="15.0">
+                                            <children>
+                                                <Label fx:id="lblAtributoActual" text="Atributo: DARK" textFill="#8be9fd">
+                                                    <font>
+                                                        <Font name="System Bold" size="14.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="lblNivelActual" text="Nivel: 8" textFill="#ffb86c">
+                                                    <font>
+                                                        <Font name="System Bold" size="14.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <Label fx:id="lblTipoActual" text="[ Dragon/Fusion/Effect ]" textFill="#bd93f9">
+                                            <font>
+                                                <Font name="System Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <HBox spacing="20.0">
+                                            <children>
+                                                <Label fx:id="lblAtkActual" text="ATK: 2500" textFill="#ff5555">
+                                                    <font>
+                                                        <Font name="System Bold" size="15.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="lblDefActual" text="DEF: 2500" textFill="#50fa7b">
+                                                    <font>
+                                                        <Font name="System Bold" size="15.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <TextArea fx:id="txtDescripcionActual" editable="false" prefHeight="210.0" style="-fx-control-inner-background: #161822; -fx-text-fill: white; -fx-font-size: 13;" wrapText="true" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+
+                        <VBox alignment="CENTER" onMouseClicked="#onSiguiente" spacing="8.0" style="-fx-cursor: hand;">
+                            <children>
+                                <Label text="Siguiente ▶" textFill="#a0a8c0">
+                                    <font>
+                                        <Font name="System Bold" size="13.0" />
+                                    </font>
+                                </Label>
+                                <ImageView fx:id="imgSiguiente" fitHeight="210.0" fitWidth="145.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" />
+                                <Label fx:id="lblNombreSiguiente" maxWidth="145.0" text="Carta Sig" textFill="#a0a8c0" wrapText="true" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </center>
+        </BorderPane>
+    </children>
+</StackPane>
